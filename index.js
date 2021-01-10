@@ -23,7 +23,6 @@ function buttonClick() {
 }
 
 function checkAnswer(userInput) {
-  console.log(pattern[count], userInput);
   if(count < pattern.length){
     if(userInput != pattern[count]){
       changeHeading("the game is over");
@@ -31,12 +30,13 @@ function checkAnswer(userInput) {
         restart()
       },300)
     }else{
-        count++
-    }
+      count++
+      
+    }    
   }
 
   if (count == pattern.length) {
-    count = 0;
+      count = 0
     setTimeout(function(){
         generateRandomNumber();    
     },300)
@@ -48,6 +48,7 @@ function generateRandomNumber() {
   level++;
   var randomNumber = Math.floor(Math.random() * 4);
   pattern.push(randomNumber);
+  console.log(pattern)
   animateButton(randomNumber);
   changeHeading("level " + level);
 }
@@ -69,4 +70,5 @@ function restart() {
   level = 0
   count = 0
   started = false;
+  btn.off('click')
 }
