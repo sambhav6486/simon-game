@@ -1,0 +1,31 @@
+.row{
+    padding: 0 30% 0 30%;
+}
+/* button */
+.btn{
+    height: 200px;
+    width: 200px;
+    border: 10px solid black;
+    border-radius: 20px;
+    margin: 20px auto 20px auto;
+}
+#heading{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem;
+    margin: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* function classes */
+.random{
+    opacity: 0.3;
+}
