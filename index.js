@@ -1,8 +1,8 @@
 
 var started = false;
 var level = 1
+var count = 0;
 var chosenColor = [];
-let userInput = []
 
 
 $('body').keypress(function(){
@@ -12,13 +12,12 @@ $('body').keypress(function(){
     started = true;
 })
 function selectButton(){
-    userInput = []
     $('h1').text('level ' + level)
     var a = Math.floor(Math.random()*10/3);
     $('.btn').eq(a).addClass('random')
     var bttn =$('.btn').eq(a).attr("id")
-    console.log(chosenColor)
     chosenColor.push(bttn);
+    console.log(chosenColor)
     setTimeout(function(){
         $('.btn').eq(a).removeClass('random')
     }, 200)
@@ -26,30 +25,25 @@ function selectButton(){
 }
 
 $('.btn').click(function(){
-    
+    count = 0;
     $(this).addClass('random')
     var buttonClicked = $(this);
-    userInput.push($(this).attr('id'))
+    var userInput = $(this).attr('id')
     console.log(userInput)
     setTimeout(function(){
         buttonClicked.removeClass('random')
     },200)
-    checkAnswer()
-});
-
-function checkAnswer(){
-    for(let i = 0; i<userInput.length; i++){
-        if(userInput[i] !== chosenColor[i]){
-            $('h1').text("Game-Over")
-        setTimeout(function(){
+    if(count < chosenColor.length){
+        if(userInput != chosenColor[count]){
             restart()
-        },500)
-        }else{
+        }
+            count++
+        if(count == chosenColor.length){
             selectButton()
         }
     }
     
-}
+});
 
 function restart(){
     level = 1
